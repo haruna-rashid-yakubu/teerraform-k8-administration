@@ -1,0 +1,16 @@
+apiVersion: v1 
+kind: Service 
+metadata: 
+  name: harouna-service-ssh-2 
+  namespace: worketyamo 
+  labels: 
+    owner: harouna 
+spec: 
+  selector: 
+    owner: harouna 
+    type: ssh 
+  ports: 
+    - port: 8080 
+      targetPort: 80 
+      nodePort: 30220
+  type: NodePort

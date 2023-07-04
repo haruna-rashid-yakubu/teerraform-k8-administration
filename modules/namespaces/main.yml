@@ -1,0 +1,8 @@
+apiVersion: v1 
+kind: Namespace 
+metadata: 
+  name: kubernetes 
+  labels: 
+    app: kubetest
+  annotations: 
+    name: kubernetes_annotation

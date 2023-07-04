@@ -1,0 +1,30 @@
+apiVersion: apps/v1 
+kind: Deployment  
+metadata: 
+  name: harouna-replica-ssh-rolling
+  labels: 
+    owner: harouna 
+    type: ssh 
+spec: 
+  template: 
+    metadata: 
+      name: harouna-replica-pod 
+      labels: 
+        owner: harouna 
+        type: webserver 
+    spec: 
+      containers: 
+        - name: my-ct 
+          image: marwaney/ssh-server 
+
+  replicas: 3 
+  selector: 
+    matchLabels:
+      owner: harouna 
+      type: webserver  
+  strategy: 
+    type: RollingUpdate 
+        
+    
+
+    

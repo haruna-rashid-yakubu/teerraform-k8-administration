@@ -1,0 +1,27 @@
+
+
+terraform {
+  backend "kubernetes" {
+    secret_suffix    = "state"   
+    config_path      = "~/.kube/config"
+  }
+}
+
+data "terraform_remote_state" "foo" {
+  backend = "kubernetes"
+  config = {
+    secret_suffix    = "state"
+    config_path = "~/.kube/config"
+  }
+}
+
+
+provider "kubernetes" {
+  config_path    = "~/.kube/config"
+}
+
+
+module "pods" {
+  source = "./modules/pods"
+}
+
